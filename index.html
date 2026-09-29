@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172f42">
+  <meta name="description" content="Compare value per taxable acre and value per gross development acre. A transparent, two-scenario calculator from The Cost of Place.">
+  <title>Value per Acre — The Cost of Place</title>
+  <link rel="canonical" href="https://thecitizentx.github.io/value-per-acre/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Value per Acre — The Cost of Place">
+  <meta property="og:description" content="Compare value per taxable acre with value per gross development acre. Same value. Different denominator.">
+  <meta property="og:url" content="https://thecitizentx.github.io/value-per-acre/">
+  <meta property="og:image" content="https://thecitizentx.github.io/value-per-acre/assets/value-per-acre-cta.png">
+  <meta property="og:image:alt" content="Same value. Different denominator. Try the Value per Acre Calculator.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./calculator.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="The Cost of Place, top of page">
+        <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M2 2h28v28H2zM2 21h28M20 2v19M2 11h18" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M22 4h6v15h-6z" fill="#b79856"/></svg>
+        <span>The Cost of Place<span class="brand-tagline">Land. Value. The bigger picture.</span></span>
+      </a>
+      <nav aria-label="Page navigation"><a href="#calculator">Calculator</a><a href="#method">The method <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow"><span class="gold-dash"></span> The denominator matters</p>
+          <h1 id="page-title">Same value.<br><em>Different denominator.</em></h1>
+          <p class="lede">What changes when you count the whole development? Compare value per taxable acre with value per gross acre—and see what the boundary leaves out.</p>
+        </div>
+        <aside class="intro-note">
+          <span class="note-index">A tool for a better comparison</span>
+          <p>Before comparing<br>the numbers,<br><em>define the land.</em></p>
+          <span class="note-caption">One measured value. Two ways to count acres.</span>
+        </aside>
+      </section>
+
+      <section id="calculator" aria-labelledby="calculator-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / Explore</p><h2 id="calculator-title">Value per acre calculator</h2></div>
+          <div class="toolbar"><button class="button button-quiet" id="reset-all" type="button"><span aria-hidden="true">↺</span> Reset examples</button><button class="button button-primary" id="copy-summary" type="button"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="6" width="10" height="11" rx="1"/><path d="M12 6V3H3v11h3"/></svg> Copy summary</button></div>
+        </div>
+        <p class="section-description">Start with these illustrative examples or enter your own figures. Values are in US dollars; all land areas are in acres.</p>
+        <div class="boundary-note" id="land-guidance"><span class="boundary-icon" aria-hidden="true">i</span><p><strong>Count each acre once.</strong> Add only land outside the acreage already entered. Roads and easements can lie inside taxable parcels; include them below only if they add distinct area to your development boundary.</p></div>
+        <noscript><p class="noscript">Enable JavaScript to use the calculator. The formulas and methodology below remain available.</p></noscript>
+        <div class="scenario-grid" id="scenarios"></div>
+        <p class="status-line" id="action-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="manual-copy" id="manual-copy" hidden>
+          <label for="summary-text">Your browser could not copy automatically. Select and copy this summary.</label>
+          <textarea id="summary-text" rows="9" readonly></textarea>
+          <button class="button button-quiet" id="close-copy" type="button">Close summary</button>
+        </div>
+        <p class="sr-only" id="calculation-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </section>
+
+      <section class="comparison-section" aria-labelledby="comparison-title">
+        <div class="section-heading"><div><p class="eyebrow">02 / Compare</p><h2 id="comparison-title">Put the boundaries side by side.</h2></div><p class="small-note">Same units. Consistent definitions.</p></div>
+        <div class="comparison-table-wrap" role="region" aria-label="Scenario comparison table" tabindex="0">
+          <table class="comparison-table">
+            <caption class="sr-only">Scenario inputs and calculated results, compared using the same metrics</caption>
+            <thead><tr><th scope="col">Measure</th><th scope="col"><span class="scenario-dot dot-a" aria-hidden="true"></span> Scenario A<span id="compare-name-a" class="table-name"></span></th><th scope="col"><span class="scenario-dot dot-b" aria-hidden="true"></span> Scenario B<span id="compare-name-b" class="table-name"></span></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Measured value <span>USD</span></th><td data-compare="a-value">—</td><td data-compare="b-value">—</td></tr>
+              <tr><th scope="row">Taxable acreage <span>acres</span></th><td data-compare="a-taxable">—</td><td data-compare="b-taxable">—</td></tr>
+              <tr><th scope="row">Gross development acreage <span>acres</span></th><td data-compare="a-gross">—</td><td data-compare="b-gross">—</td></tr>
+              <tr class="emphasis-row"><th scope="row">Value per taxable acre <span>USD / acre</span></th><td data-compare="a-taxableRate">—</td><td data-compare="b-taxableRate">—</td></tr>
+              <tr class="emphasis-row"><th scope="row">Value per gross acre <span>USD / acre</span></th><td data-compare="a-grossRate">—</td><td data-compare="b-grossRate">—</td></tr>
+              <tr><th scope="row">Reduction using gross acreage <span>Taxable-acre value is the baseline</span></th><td data-compare="a-reduction">—</td><td data-compare="b-reduction">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="comparison-reading" id="comparison-reading"></p>
+      </section>
+
+      <section class="method-section" id="method" aria-labelledby="method-title">
+        <div class="method-intro"><p class="eyebrow">03 / Understand</p><h2 id="method-title">The math is simple.<br>The boundary is the choice.</h2><p>Keep the measured value fixed within each scenario. Change only the acreage beneath it.</p><div class="main-formula" aria-label="Value per acre equals measured value divided by defined acreage"><span>Value per acre</span><span aria-hidden="true">=</span><span class="fraction"><span>Measured value</span><span>Defined acreage</span></span></div></div>
+        <div class="formula-list">
+          <div class="formula-row"><h3>Gross development acreage</h3><p class="equation">A<sub>G</sub> = A<sub>T</sub> + A<sub>R</sub> + A<sub>D</sub> + A<sub>C</sub> + A<sub>E</sub></p><p>Taxable + roads + drainage + common space + easements / other. These must be distinct, non-overlapping areas.</p></div>
+          <div class="formula-pair"><div class="formula-row"><h3>Per taxable acre</h3><p class="equation">V<sub>TA</sub> = V / A<sub>T</sub></p></div><div class="formula-row"><h3>Per gross acre</h3><p class="equation">V<sub>GA</sub> = V / A<sub>G</sub></p></div></div>
+          <div class="formula-row"><h3>Percentage reduction</h3><p class="equation equation-percent">Δ% = [(V<sub>TA</sub> − V<sub>GA</sub>) / V<sub>TA</sub>] × 100</p><p>The percentage difference uses taxable-acre value as its baseline. If the measured value is zero, both rates are $0 and the percentage is undefined (N/A).</p></div>
+          <p class="formula-key"><strong>V</strong> = measured value &nbsp;·&nbsp; <strong>A</strong> = acreage<br><strong>T</strong> taxable &nbsp;·&nbsp; <strong>G</strong> gross &nbsp;·&nbsp; <strong>R</strong> roads &nbsp;·&nbsp; <strong>D</strong> drainage &nbsp;·&nbsp; <strong>C</strong> common &nbsp;·&nbsp; <strong>E</strong> easements / other</p>
+        </div>
+      </section>
+
+      <aside class="caveat" aria-labelledby="caveat-title"><p class="eyebrow">Read the result in context</p><h2 id="caveat-title">Results are only comparable when the acreage boundary is defined consistently.</h2><div class="caveat-columns"><p>Use a consistent value definition, assessment date, and treatment of shared land across scenarios. Saleable acreage is not automatically taxable acreage. The examples assume the entered taxable acres are the measured parcel area.</p><p>With a positive measured value, a larger denominator lowers reported value per acre; it does not change the project’s value. This tool compares value density, not tax revenue, service costs, or net fiscal impact.</p></div></aside>
+    </main>
+    <footer class="footer"><span>The Cost of Place <span class="footer-divider">/</span> Value per Acre</span><span>Calculated in your browser. No data is sent or saved.</span></footer>
+  </div>
+
+  <template id="scenario-template">
+    <article class="scenario-card">
+      <header class="scenario-header"><h3 class="scenario-label"></h3><button class="reset-scenario" type="button">Reset</button></header>
+      <label class="sr-only name-label"></label><input class="scenario-name" type="text" maxlength="64" autocomplete="off" spellcheck="false">
+      <fieldset><legend class="sr-only inputs-legend"></legend>
+        <div class="primary-fields">
+          <div class="field" data-field="value"><label>Measured value</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="32" required><span class="input-unit" aria-hidden="true">USD</span></div><span class="field-error" hidden></span></div>
+          <div class="field" data-field="taxable"><label>Taxable acreage</label><div class="input-wrap"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="32" required><span class="input-unit" aria-hidden="true">ac</span></div><span class="field-error" hidden></span></div>
+        </div>
+        <p class="additional-heading">Additional land <span>Beyond the taxable acreage above</span></p>
+        <div class="additional-fields">
+          <div class="field" data-field="roads"><label>Roads / right-of-way</label><div class="input-wrap"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="32" required><span class="input-unit" aria-hidden="true">ac</span></div><span class="field-error" hidden></span></div>
+          <div class="field" data-field="drainage"><label>Drainage / detention</label><div class="input-wrap"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="32" required><span class="input-unit" aria-hidden="true">ac</span></div><span class="field-error" hidden></span></div>
+          <div class="field" data-field="common"><label>Common / open space</label><div class="input-wrap"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="32" required><span class="input-unit" aria-hidden="true">ac</span></div><span class="field-error" hidden></span></div>
+          <div class="field" data-field="easements"><label>Easements / other</label><div class="input-wrap"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="32" required><span class="input-unit" aria-hidden="true">ac</span></div><span class="field-error" hidden></span></div>
+        </div>
+      </fieldset>
+      <div class="gross-total"><span>Gross development acreage</span><strong><output data-result="gross">—</output> <span>ac</span></strong></div>
+      <div class="land-bar" role="img" aria-label="Acreage composition"></div>
+      <div class="land-legend"><span><i class="legend-taxable" aria-hidden="true"></i>Taxable <output data-result="share">—</output></span><span><i class="legend-other" aria-hidden="true"></i>Additional land</span></div>
+      <div class="results">
+        <div class="rate-result"><h4>Value per taxable acre</h4><output data-result="taxableRate">—</output><span>USD / acre</span></div>
+        <div class="rate-result"><h4>Value per gross acre</h4><output data-result="grossRate">—</output><span>USD / acre</span></div>
+        <div class="reduction-result"><span class="reduction-arrow" aria-hidden="true">↘</span><p><strong data-result="reduction">—</strong><span data-result="explanation">Using gross development acreage</span></p></div>
+      </div>
+      <p class="scenario-validation" hidden>Correct the highlighted inputs to see this scenario’s results.</p>
+    </article>
+  </template>
+</body>
+</html>
