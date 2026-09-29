@@ -31,10 +31,12 @@ svg { flex-shrink: 0; }
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px 0 26px; border-bottom: 1px solid var(--navy); }
 .brand { display: inline-flex; gap: 13px; align-items: center; text-decoration: none; font: 25px/1.2 var(--serif); letter-spacing: -.7px; }
 .brand-tagline { display: block; margin-top: 6px; color: var(--muted); font: 10px/1.4 var(--sans); letter-spacing: 1.35px; text-transform: uppercase; }
-nav { display: flex; gap: 28px; font-size: 13px; }
+nav { display: flex; align-items: center; gap: 28px; font-size: 13px; }
 nav a { text-decoration: none; }
 nav a:hover { text-decoration: underline; }
 nav span { padding-left: 5px; color: var(--green); }
+.citizen-link { display: inline-flex; align-items: center; flex-shrink: 0; min-height: 36px; }
+.citizen-link img { display: block; width: 124px; height: auto; }
 .intro { display: grid; grid-template-columns: 1fr 270px; gap: 60px; padding: 55px 0 52px; }
 .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 1.9px; text-transform: uppercase; }
 .intro .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 19px; }
@@ -171,11 +173,12 @@ fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
 }
 @media (max-width: 760px) {
   .page-shell { width: calc(100% - 36px); }
-  .masthead { padding: 23px 0; }
+  .masthead { padding: 23px 0; flex-wrap: wrap; gap: 17px; }
   .brand { font-size: 22px; }
   .brand-tagline { font-size: 8px; letter-spacing: 1.1px; }
-  nav { gap: 15px; font-size: 11px; }
-  nav a:first-child { display: none; }
+  nav { width: 100%; gap: 20px; font-size: 11px; }
+  .citizen-link { margin-right: auto; }
+  .citizen-link img { width: 116px; }
   .intro { grid-template-columns: 1fr; padding: 38px 0 36px; gap: 0; }
   h1 { font-size: clamp(38px, 7.5vw, 56px); letter-spacing: -1.4px; }
   .lede { font-size: 14px; }

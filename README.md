@@ -2,9 +2,9 @@
 
 A small, responsive calculator for comparing value per taxable acre with value per gross development acre. Two editable scenarios make the effect of the denominator visible.
 
-**Public calculator:** [thecitizentx.github.io/value-per-acre/](https://thecitizentx.github.io/value-per-acre/)
+**Public calculator:** [visuals.thecitizentx.com/value-per-acre/](https://visuals.thecitizentx.com/value-per-acre/)
 
-Published from [thecitizentx/value-per-acre](https://github.com/thecitizentx/value-per-acre) and listed alongside the other tools in [The Citizen's visuals repository](https://github.com/thecitizentx/thecitizen_visuals).
+Published alongside the other tools in [The Citizen's visuals repository](https://github.com/thecitizentx/thecitizen_visuals/tree/main/value-per-acre). A [standalone repository](https://github.com/thecitizentx/value-per-acre) is also available.
 
 Plain HTML, CSS, and JavaScript. No build step, packages, account, API keys, external fonts, or network services are required. Calculations stay in the browser. Inputs are not transmitted or persisted; reloading restores the examples.
 
@@ -21,12 +21,15 @@ value-per-acre/
 ├── .nojekyll
 ├── README.md
 ├── assets/
+│   ├── the-citizen-substack.png
 │   └── value-per-acre-cta.png
 └── tests/
     └── calculator.test.cjs
 ```
 
 `calculator.js` contains input validation, calculations, number formatting, illustrative defaults, and the text summary. `app.js` connects those functions to the page. All assets use relative paths, including under a GitHub project URL.
+
+The small Citizen logo in the header links to [The Citizen on Substack](https://thecitizentexas.substack.com/?utm_campaign=profile_chips) in a new tab so readers can keep their calculator inputs open.
 
 ## Open locally
 
@@ -56,9 +59,9 @@ References: [Creating a GitHub Pages site](https://docs.github.com/en/pages/gett
 
 The publication banner is included at `assets/value-per-acre-cta.png` (2172 × 724 pixels). `banner.html` is a responsive, clickable version linked to the calculator's public Citizen address.
 
-For an article, insert the PNG and link it to `https://thecitizentx.github.io/value-per-acre/`. The image itself does not contain a clickable link.
+For an article, insert the PNG and link it to `https://visuals.thecitizentx.com/value-per-acre/`. The image itself does not contain a clickable link.
 
-Direct banner image: `https://thecitizentx.github.io/value-per-acre/assets/value-per-acre-cta.png`.
+Direct banner image: `https://visuals.thecitizentx.com/value-per-acre/assets/value-per-acre-cta.png`.
 
 ## Use the calculator
 
